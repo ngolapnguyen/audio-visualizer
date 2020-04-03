@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styles/index.css";
+import { useConnect } from "./libs/redux-bundler-react";
+import Helmet from "react-helmet";
+import { getNavHelper } from "internal-nav-helper";
 
 function App() {
+  const {
+    doUpdateUrl,
+    routeTitle,
+    routeComponent: Page,
+    routeTemplate: Template
+  } = useConnect("selectRouteComponent", "selectRouteTemplate", "doUpdateUrl");
+
+  const onNav = React.useCallback(getNavHelper(doUpdateUrl), [doUpdateUrl]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <title>Hello ThreeJs!</title>
+      </Helmet>
+
+      <Template routeTitle={routeTitle} onClick={onNav}>
+        <Page />
+      </Template>
+    </>
   );
 }
 
