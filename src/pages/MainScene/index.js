@@ -5,18 +5,20 @@ import Light from "../../components/Light";
 import Plane from "../../components/Plane";
 import Controls from "../../components/Controls";
 import Shadow from "../../components/Shadow";
+import AudioVisualizer from "../../components/AudioVisualizer";
 
 const MainScene = () => {
   return (
     <Canvas
       style={{
-        backgroundColor: "black"
+        backgroundColor: "black",
       }}
     >
-      <axesHelper args={999} />
+      <AudioVisualizer />
+      {/* <axesHelper args={999} /> */}
       <Light />
-      <Shadow />
-      <Cube />
+      {/* <Shadow /> */}
+      {/* <Cube /> */}
       <Plane />
       <Controls />
     </Canvas>
