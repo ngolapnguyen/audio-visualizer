@@ -17,7 +17,6 @@ const AudioVisualizer = () => {
     barColor: 0xffff00,
     fftSize: 64,
   });
-  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     // Dat GUI
@@ -45,8 +44,10 @@ const AudioVisualizer = () => {
   useEffect(() => {
     if (settings.isPlaying) {
       sampleAudio2.play();
+      console.log("Play Music");
     } else {
       sampleAudio2.pause();
+      console.log("Pause Music");
     }
   }, [settings.isPlaying]);
 
@@ -76,13 +77,6 @@ const AudioVisualizer = () => {
   useFrame(() => {
     analyser.getFrequencyData();
     uniforms.tAudioData.value.needsUpdate = true;
-
-    if (counter < 10) {
-      console.log("==========");
-      console.log(uniforms.tAudioData.value);
-      console.log(analyser.data);
-      setCounter(counter + 1);
-    }
   });
 
   return (
