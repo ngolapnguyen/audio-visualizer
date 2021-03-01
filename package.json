@@ -22,7 +22,7 @@
     "redux-bundler-async-resources-hooks": "^1.0.1",
     "redux-bundler-hook": "^1.0.3",
     "redux-bundler-react": "^1.2.0",
-    "three": "^0.115.0",
+    "three": "^0.125.0",
     "tailwindcss": "^1.2.0"
   },
   "scripts": {
